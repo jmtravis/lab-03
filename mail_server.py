@@ -24,11 +24,20 @@ def load_mail() -> List[Dict[str, str]]:
 
 def save_mail(mail: List[Dict[str, str]]) -> None:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
+    Summary: Saves the mail from the json file
+
+    Returns:
+        str: The id of the new mail entry
     """
     thisdir.joinpath('mail_db.json').write_text(json.dumps(mail, indent=4))
 
 def add_mail(mail_entry: Dict[str, str]) -> str:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
+    
+    Summary: Adds a new mail entry to the json file
+
+    Returns:
+        str: The id of the new mail entry
     """
     mail = load_mail()
     mail.append(mail_entry)
