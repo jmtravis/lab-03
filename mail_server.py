@@ -8,8 +8,6 @@ import json
 app = Flask(__name__)
 thisdir = pathlib.Path(__file__).parent.absolute() # path to directory of this file
 
-# Function to load and save the mail to/from the json file
-
 def load_mail() -> List[Dict[str, str]]:
     """
     Loads the mail from the json file
@@ -24,12 +22,14 @@ def load_mail() -> List[Dict[str, str]]:
 
 def save_mail(mail: List[Dict[str, str]]) -> None:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
-    Summary: Saves the mail from the json file
+    Summary: Takes loaded mail from the json file and saves it to a new path 
 
     Returns:
-        str: The id of the new mail entry
+        str: Mail entry
     """
-    thisdir.joinpath('mail_db.json').write_text(json.dumps(mail, indent=4))
+    dumped_json = json.dumps(mail, indent=4)
+    savepath = thisdir.joinpath('mail_db.json')
+    savepath.write_text(dumped_json)
 
 def add_mail(mail_entry: Dict[str, str]) -> str:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
@@ -59,6 +59,11 @@ def delete_mail(mail_id: str) -> bool:
 
 def get_mail(mail_id: str) -> Optional[Dict[str, str]]:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
+     Summary: Deletes a mail entry from the json file
+
+
+    Returns:
+        bool: True if the mail was deleted, False otherwise
     """
     mail = load_mail()
     for entry in mail:
@@ -69,6 +74,11 @@ def get_mail(mail_id: str) -> Optional[Dict[str, str]]:
 
 def get_inbox(recipient: str) -> List[Dict[str, str]]:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
+     Summary: Gets all mail within the recipient inbox 
+
+    
+    Returns:
+        list: All mail in inbox 
     """
     mail = load_mail()
     inbox = []
@@ -116,6 +126,14 @@ def delete_mail_route(mail_id: str):
         bool: True if the mail was deleted, False otherwise
     """
     # TODO: implement this function
+    mail = load_mail()
+    for i, entry in enumerate(mail):
+        if entry['id'] == mail_id:
+            mail.pop(i)
+            save_mail(mail)
+            return True
+
+    return False
     pass # remove this line
 
 @app.route('/mail/<mail_id>', methods=['GET'])
@@ -150,7 +168,7 @@ def get_inbox_route(recipient: str):
 
 # TODO: implement a rout e to get all mail entries for a sender
 # HINT: start with soemthing like this:
-#   @app.route('/mail/sent/<sender>', ...)
+@app.route('/mail/sent/<sender>', methods= ['GET'])
 
 
 if __name__ == '__main__':
