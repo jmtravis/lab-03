@@ -136,8 +136,7 @@ def delete_mail_route(mail_id: str):
     res.status_code = 200 # Status code for "ok"
     return res
 
-    return False
-    pass # remove this line
+    
 
 @app.route('/mail/<mail_id>', methods=['GET'])
 def get_mail_route(mail_id: str):
