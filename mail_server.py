@@ -172,8 +172,13 @@ def get_inbox_route(recipient: str):
 # TODO: implement a rout e to get all mail entries for a sender
 # HINT: start with soemthing like this:
 @app.route('/mail/sent/<sender>', methods= ['GET'])
-def get_inbox_route(sender: str):
-    pass
+def get_sender_route(sender: str):
+   
+   res = jsonify(get_sent(sender))
+   res.status_code = 200
+   return res
+   
+
 
 
 if __name__ == '__main__':
