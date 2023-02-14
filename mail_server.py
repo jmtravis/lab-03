@@ -11,6 +11,12 @@ thisdir = pathlib.Path(__file__).parent.absolute() # path to directory of this f
 def load_mail() -> List[Dict[str, str]]:
     """
     Loads the mail from the json file
+    
+    Args:
+        recipient (str): The recipient of the mail
+        sender (str): The sender of the mail
+        subject (str): The subject of the mail
+        body (str): The body of the mail
 
     Returns:
         list: A list of dictionaries representing the mail entries
