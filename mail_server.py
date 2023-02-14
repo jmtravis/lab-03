@@ -13,10 +13,7 @@ def load_mail() -> List[Dict[str, str]]:
     Loads the mail from the json file
     
     Args:
-        recipient (str): The recipient of the mail
-        sender (str): The sender of the mail
-        subject (str): The subject of the mail
-        body (str): The body of the mail
+        None 
 
     Returns:
         list: A list of dictionaries representing the mail entries
@@ -29,7 +26,10 @@ def load_mail() -> List[Dict[str, str]]:
 def save_mail(mail: List[Dict[str, str]]) -> None:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
     Summary: Takes loaded mail from the json file and saves it to a same path 
-
+    
+    Args:
+        mail (list): Loaded mail information 
+        
     Returns:
         str: Mail entry
     """
@@ -41,6 +41,9 @@ def add_mail(mail_entry: Dict[str, str]) -> str:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
     
     Summary: Adds a new mail entry to the json file
+    
+    Args:
+        mail_entry (Dict): Contents within new mail entry 
 
     Returns:
         str: The id of the new mail entry
@@ -54,6 +57,9 @@ def add_mail(mail_entry: Dict[str, str]) -> str:
 def delete_mail(mail_id: str) -> bool:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
      Summary: Deletes a mail entry from the json file
+   
+   Args:
+        mail_id (str): Specific idenitfication for mail entry 
 
     Returns:
         bool: True if the mail was deleted, False otherwise
@@ -70,7 +76,10 @@ def delete_mail(mail_id: str) -> bool:
 def get_mail(mail_id: str) -> Optional[Dict[str, str]]:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
      Summary: Fetches mail from mailbox 
-
+    
+    Args:
+         mail_id (str): Specific idenitfication for mail entry
+        
     Returns:
         directory: Mail entry contents
     """
