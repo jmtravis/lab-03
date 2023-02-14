@@ -93,7 +93,10 @@ def get_mail(mail_id: str) -> Optional[Dict[str, str]]:
 def get_inbox(recipient: str) -> List[Dict[str, str]]:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
      Summary: Gets all mail within the recipient inbox 
-
+    
+    Args:
+        recipient (str): The recipient of the mail
+    
     Returns:
         list: All mail in inbox 
     """
@@ -108,7 +111,11 @@ def get_inbox(recipient: str) -> List[Dict[str, str]]:
 def get_sent(sender: str) -> List[Dict[str, str]]:
     """TODO: fill out this docstring (using the load_mail docstring as a guide)
        Summary: Gets all sent mail within the recipient inbox 
-
+   
+   Args:
+        sender (str): The sender of the mail
+        
+        
     Returns:
         list: All sent mail in inbox 
     """
@@ -125,7 +132,10 @@ def get_sent(sender: str) -> List[Dict[str, str]]:
 def add_mail_route():
     """
     Summary: Adds a new mail entry to the json file
-
+   
+   Args:
+       None
+       
     Returns:
         str: The id of the new mail entry
     """
