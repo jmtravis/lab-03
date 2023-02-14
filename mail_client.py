@@ -33,7 +33,7 @@ def send_mail(recipient: str, sender: str, subject: str, body: str) -> bool:
 
 def get_inbox(recipient: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
-    gets all mail entry to the server by making a POST request to the /mail endpoint.
+    Gets all mail entries from the server by making a GET request to the /mail endpoint.
     The JSON body of the request contains the following keys:
     - recipient
     - sender
@@ -44,14 +44,14 @@ def get_inbox(recipient: str) -> None:
         recipient (str): The recipient of the mail
         
     Returns:
-        bool: True if the mail was sent successfully, False otherwise
+      Nothing
     """
     response = requests.get(f'{SERVER}/mail/inbox/{recipient}')
     pprint.pprint(response.json())
 
 def get_sent(sender: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
-    Sends a mail entry to the server by making a POST request to the /mail endpoint.
+    Gets a sent mail entry from the server by making a GET request to the /mail endpoint.
     The JSON body of the request contains the following keys:
     - recipient
     - sender
@@ -62,19 +62,43 @@ def get_sent(sender: str) -> None:
         sender (str): The sender of the mail
      
     Returns:
-        bool: True if the mail was sent successfully, False otherwise
+       Nothing 
     """
     response = requests.get(f'{SERVER}/mail/sent/{sender}')
     pprint.pprint(response.json())
 
 def get_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+   Gets a mail entry from the server by making a GET request to the /mail endpoint.
+    The JSON body of the request contains the following keys:
+    - recipient
+    - sender
+    - subject
+    - body
+    
+    Args:
+        mail_id (str): The ID of the mail entry
+     
+    Returns:
+       Nothing 
     """
     response = requests.get(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
 
 def delete_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+     Deletes a mail entry from the server by making a DELETE request to the /mail endpoint.
+    The JSON body of the request contains the following keys:
+    - recipient
+    - sender
+    - subject
+    - body
+    
+    Args:
+        mail_id (str): The ID of the mail entry
+     
+    Returns:
+       Nothing 
     """
     response = requests.delete(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
